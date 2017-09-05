@@ -9,8 +9,11 @@ docker \
     --env KEY="$(cat ${HOME}/certs/domain.key)" \
     --env CERT="$(cat ${HOME}/certs/domain.crt)" \
     endlessplanet/registry &&
+    echo A &&
     docker \
         network \
         connect \
         --alias registry entrypoint_default $(cat ${CIDFILE}) &&
-    docker container --detach start $(cat ${CIDFILE})
+    echo B &&
+    docker container --detach start $(cat ${CIDFILE}) &&
+    echo C
