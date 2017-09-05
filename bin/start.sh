@@ -7,6 +7,9 @@ CIDFILE=$(mktemp) &&
         create \
         --cidfile ${CIDFILE} \
         --publish 5000:5000 \
+        --publish 80:80 \
+        --env KEY="$(cat ~/certs/domain.key)" \
+        --env CERT="$(cat ~/certs/domain.crt)" \
         endlessplanet/registry &&
     docker \
         network \

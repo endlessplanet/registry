@@ -8,19 +8,14 @@ fi &&
     then
         mkdir /var/opt/docker/certs
     fi &&
-    if [ ! -f /var/opt/docker/certs/registry.key ] || [ ! -f /var/opt/docker/certs/registry.crt ]
+    if [ ! -f /var/opt/docker/certs/registry.key ]
     then
-        openssl req -x509 -newkey rsa:4096 -keyout /var/opt/docker/certs/registry.key -out /var/opt/docker/certs/registry.crt -days 365 -nodes <<EOF
-US
-Virginia
-Arlington
-Endless Planet
-Heavy Industries
-registry
-
-
-
-
-EOF
+        echo ${KEY} > /var/opt/docker/certs/registry.key &&
+            chmod 0644 /var/opt/docker/certs/registry.key
+    fi &&
+    if  [ ! -f /var/opt/docker/certs/registry.crt ]
+    then
+        echo ${CERT} > /var/opt/docker/certs/registry.crt &&
+            chmod 0644 /var/opt/docker/certs/registry.crt
     fi &&
     /entrypoint.sh "${@}"
