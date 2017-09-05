@@ -13,4 +13,4 @@ docker \
         network \
         connect \
         --alias registry entrypoint_default $(cat ${CIDFILE}) &&
-    docker container start $(cat ${CIDFILE})
+    docker container --detach start $(cat ${CIDFILE})
