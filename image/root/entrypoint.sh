@@ -10,12 +10,12 @@ fi &&
     fi &&
     if [ ! -f /var/opt/docker/certs/registry.key ]
     then
-        echo ${KEY} > /var/opt/docker/certs/registry.key &&
+        echo "${KEY}" > /var/opt/docker/certs/registry.key &&
             chmod 0644 /var/opt/docker/certs/registry.key
     fi &&
     if  [ ! -f /var/opt/docker/certs/registry.crt ]
     then
-        echo ${CERT} > /var/opt/docker/certs/registry.crt &&
+        echo "${CERT}" > /var/opt/docker/certs/registry.crt &&
             chmod 0644 /var/opt/docker/certs/registry.crt
     fi &&
     /entrypoint.sh "${@}"
