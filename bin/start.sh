@@ -15,5 +15,5 @@ docker \
         --alias registry \
         $(cat ${HOME}/docker/networks/default) \
         $(cat ${HOME}/docker/containers/registry) &&
-    docker container --detach start $(cat ${HOME}/docker/containers/registry)
+    docker container start $(cat ${HOME}/docker/containers/registry)
  
