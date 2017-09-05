@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo KEY === "$(cat ${HOME}/certs/domain.key)" &&
+echo CERT === "$(cat ${HOME}/certs/domain.crt)"
 docker \
     container \
     create \
@@ -8,7 +10,7 @@ docker \
     --publish 80:80 \
     --env KEY="$(cat ${HOME}/certs/domain.key)" \
     --env CERT="$(cat ${HOME}/certs/domain.crt)" \
-    --entrypoint bash \
+    --entrypoint sh \
     --tty \
     endlessplanet/registry &&
     docker \
